@@ -3,7 +3,7 @@ const { randomInt } = require('../functions/utils');
 const constants = require('../data/constants');
 
 module.exports = app => {
-  app.post('/tryHitting', (req, res) => {
+  app.post('/tryHitting', async (req, res) => {
     const { vkId, target } = req.body;
     const result = {
       error: false,
@@ -12,7 +12,7 @@ module.exports = app => {
       attempts: 0,
     };
 
-    const user = User.findOne({ vkId: vkId }).then(data => data);
+    const user = await User.findOne({ vkId: vkId }).then(data => data);
     if (user && user.attempts > 0) {
       const random = randomInt(0, 100);
       const success = random <= constants.PERCENTS[target];
