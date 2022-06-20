@@ -19,7 +19,7 @@ module.exports = app => {
 
       result.success = success;
       result.points = success ? user.points + constants.AWARD[target] : user.points;
-      result.attempts = user.attempts - 1;
+      result.attempts = success ? user.attempts : user.attempts - 1;
       User.updateOne({ vkId: vkId }, {
         $set: {
           points: result.points,

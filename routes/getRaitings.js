@@ -5,7 +5,7 @@ module.exports = app => {
   app.post('/getRaitings', async (req, res) => {
     const { vkId } = req.body;
     const user = await User.findOne({ vkId }).then(data => data);
-    const raitings = getRaitings(user);
+    const raitings = await getRaitings(user);
 
     return res.json(raitings);
   });

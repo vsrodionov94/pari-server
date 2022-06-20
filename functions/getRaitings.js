@@ -2,7 +2,7 @@ const User = require('../models/user');
 
 module.exports = async user => {
   const result = {
-    ratings: [],
+    raitings: [],
     user: {
       place: 0,
       name: user.name,
@@ -20,10 +20,10 @@ module.exports = async user => {
         result.user.place = i + 1;
       }
       if (raitings[i].points > 0) {
-        result.ratings.push({
+        result.raitings.push({
           place: i + 1,
           points: raitings[i].points,
-          name: raitings[i].userName,
+          name: raitings[i].name,
         });
       }
     }
@@ -33,7 +33,7 @@ module.exports = async user => {
     const count = await User.countDocuments({ points: { $gt: user.points } });
     result.user.place = count + 11;
   }
-  result.user.name = user.userName;
+  result.user.name = user.name;
   result.user.points = user.points;
   return result;
 };
