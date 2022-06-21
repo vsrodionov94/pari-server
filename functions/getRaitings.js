@@ -13,13 +13,15 @@ module.exports = async user => {
   const raitings = await User.find({}).limit(10).sort({ points: -1, pointsTime: 1 });
 
   let isTop = false;
+  let level = 0;
   for (let i = 0; i < raitings.length; i += 1) {
     if (raitings[i]) {
       if (String(raitings[i].id) === String(user.id)) {
         isTop = true;
-        result.user.place = i + 1;
+        result.user.place = level + 1;
       }
       if (raitings[i].points > 0) {
+        level += 1;
         result.raitings.push({
           place: i + 1,
           points: raitings[i].points,
