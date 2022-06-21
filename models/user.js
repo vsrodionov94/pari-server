@@ -7,6 +7,11 @@ const userSchema = new mongoose.Schema({
     required: true,
     index: true,
   },
+  time: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
   team: {
     type: Number,
     required: true,

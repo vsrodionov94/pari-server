@@ -13,10 +13,11 @@ const checkDaily = user => {
   if (user.time < newDay) {
     user.time = Math.round(new Date().getTime() / 1000);
     user.attempts = constants.ATTEMPTS_COUNT;
-
-    User.updateOne({ _id: user.id }, { $set: { time: user.time, attempts: user.attempts } })
-      .then(() => null);
   }
+
+  user.time = Math.round(new Date().getTime() / 1000);
+  User.updateOne({ _id: user.id }, { $set: { time: user.time, attempts: user.attempts } })
+    .then(() => null);
 
   return user.attempts;
 };
