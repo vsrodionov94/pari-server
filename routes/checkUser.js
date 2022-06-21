@@ -13,8 +13,7 @@ module.exports = app => {
       attempts: constants.ATTEMPTS_COUNT,
     };
 
-    const user = await User.findOne({ vkId }).then(data => data);
-
+    const user = await User.findOne({ vkId: vkId }).then(data => data);
     if (user) {
       result.team = user.team;
       result.points = user.points;
