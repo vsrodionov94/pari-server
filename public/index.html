@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./index.css">
+  <title>Париматч Статистика</title>
+</head>
+<body>
+  <main class="main">
+    <div class="main__str">
+      <p>Количество уникальных запусков приложения:</p> <p class="main__count" id="opened">0</p>
+    </div>
+    <div class="main__str">
+      <p>общее количество запусков приложения:</p> <p class="main__count" id="uniqopened">0</p>
+    </div>
+    <div class="main__str">
+      <p>общее количество завершенных игр:</p> <p class="main__count" id="gameend">0</p>
+    </div>
+  </main>
+
+  <ul class="table">
+
+  </ul>
+
+  <template id="user-template">
+    <li class="user">
+      <p> VKID </p>
+      <p class="user__id">1234</p>
+      <p> Количество очков </p>
+      <p class="user__points">0</p>
+    </li>
+  </template>
+</body>
+<script src="./script.js"> </script>
+</html>

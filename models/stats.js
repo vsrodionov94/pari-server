@@ -5,6 +5,10 @@ const statsSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  endGamesCount: {
+    type: Number,
+    default: 0,
+  },
 });
 
 module.exports = mongoose.model('stats', statsSchema);

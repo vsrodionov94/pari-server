@@ -26,4 +26,5 @@ mongoose.connect(dbLink, {
 app.listen(NODE_ENV === 'production' ? PORT : 4000, () => {
   migration();
   routes(app);
+  app.use('/static', express.static('public'));
 });

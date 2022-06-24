@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const { randomInt } = require('../functions/utils');
 const constants = require('../data/constants');
+const Statistics = require('../classes/Statistics');
 
 module.exports = app => {
   app.post('/tryHitting', async (req, res) => {
@@ -27,6 +28,9 @@ module.exports = app => {
           attempts: result.attempts,
         },
       }).then(() => null);
+      if (result.attempts === 0) {
+        Statistics.incEndGamesCount();
+      }
     } else {
       result.error = true;
     }
