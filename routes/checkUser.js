@@ -1,8 +1,7 @@
 const User = require('../models/user');
 const constants = require('../data/constants');
-const {
-  checkDaily,
-} = require('../functions/utils');
+const Statistics = require('../classes/Statistics');
+const { checkDaily } = require('../functions/utils');
 
 module.exports = app => {
   app.post('/checkUser', async (req, res) => {
@@ -22,7 +21,7 @@ module.exports = app => {
       const time = Math.round(new Date().getTime() / 1000);
       User.create({ vkId: vkId, name: name, time: time }).then(() => null);
     }
-
+    Statistics.incGamesCount();
     return res.json(result);
   });
 };
