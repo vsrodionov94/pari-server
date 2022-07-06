@@ -13,12 +13,15 @@ module.exports = app => {
     };
 
     const user = await User.findOne({ vkId: vkId }).then(data => data);
+    const time = Math.round(new Date().getTime() / 1000);
+
     if (user) {
       result.team = user.team;
       result.points = user.points;
-      result.attempts = checkDaily(user);
+      if (time < process.env.END_TIME) {
+        result.attempts = checkDaily(user);
+      }
     } else {
-      const time = Math.round(new Date().getTime() / 1000);
       User.create({ vkId: vkId, name: name, time: time }).then(() => null);
     }
     Statistics.incGamesCount();
